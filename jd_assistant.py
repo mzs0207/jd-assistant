@@ -386,6 +386,17 @@ class Assistant(object):
         # 预约成功，已获得抢购资格 / 您已成功预约过了，无需重复预约
         logger.info(reserve_result)
 
+    def make_reserve_by_time(self, sku_id,buy_time):
+        """
+        定时预约
+        :param sku_id:
+        :param buy_time:
+        :return:
+        """
+        t = Timer(buy_time=buy_time)
+        t.start()
+        self.make_reserve(sku_id)
+
     @check_login
     def get_user_info(self):
         """获取用户信息

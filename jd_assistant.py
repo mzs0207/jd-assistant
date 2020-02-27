@@ -1097,7 +1097,6 @@ class Assistant(object):
         except Exception as e:
             logger.error(e)
 
-    @deprecated
     def _get_seckill_url(self, sku_id):
         """获取商品的抢购链接
 
@@ -1133,7 +1132,6 @@ class Assistant(object):
                 logger.info("抢购链接获取失败，%s不是抢购商品或抢购页面暂未刷新，1秒后重试", sku_id)
                 time.sleep(1)
 
-    @deprecated
     def request_seckill_url(self, sku_id):
         """访问商品的抢购链接（用于设置cookie等）
         :param sku_id: 商品id
@@ -1148,7 +1146,7 @@ class Assistant(object):
         }
         self.sess.get(url=self.seckill_url.get(sku_id), headers=headers, allow_redirects=False)
 
-    @deprecated
+    @check_login
     def request_seckill_checkout_page(self, sku_id, num=1):
         """访问抢购订单结算页面
         :param sku_id: 商品id
@@ -1168,7 +1166,7 @@ class Assistant(object):
         }
         self.sess.get(url=url, params=payload, headers=headers)
 
-    @deprecated
+    @check_login
     def _get_seckill_init_info(self, sku_id, num=1):
         """获取秒杀初始化信息（包括：地址，发票，token）
         :param sku_id:
@@ -1188,7 +1186,7 @@ class Assistant(object):
         resp = self.sess.post(url=url, data=data, headers=headers)
         return parse_json(resp.text)
 
-    @deprecated
+    @check_login
     def _gen_seckill_order_data(self, sku_id, num=1):
         """生成提交抢购订单所需的请求体参数
         :param sku_id: 商品id
@@ -1242,7 +1240,7 @@ class Assistant(object):
         }
         return data
 
-    @deprecated
+    @check_login
     def submit_seckill_order(self, sku_id, num=1):
         """提交抢购（秒杀）订单
         :param sku_id: 商品id
@@ -1281,7 +1279,7 @@ class Assistant(object):
             logger.info('抢购失败，返回信息: %s', resp_json)
             return False
 
-    @deprecated
+    @check_login
     def exec_seckill(self, sku_id, retry=4, interval=4, num=1):
         """立即抢购
 
@@ -1309,7 +1307,7 @@ class Assistant(object):
             logger.info('执行结束，抢购%s失败！', sku_id)
             return False
 
-    @deprecated
+    @check_login
     def exec_seckill_by_time(self, sku_ids, buy_time, retry=4, interval=4, num=1):
         """定时抢购
         :param sku_ids: 商品id，多个商品id用逗号进行分割，如"123,456,789"

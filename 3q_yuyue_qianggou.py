@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import datetime
+import time
 
 from jd_assistant import Assistant
 
@@ -27,6 +28,7 @@ if __name__ == '__main__':
     while 1:
         try:
             buy()
+            time.sleep(60*60*5)
         except Exception as e:
             print(e)
 

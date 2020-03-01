@@ -367,15 +367,22 @@ class Assistant(object):
         return 'https:' + reserve_url if reserve_url else None
 
     @check_login
-    def make_reserve(self, sku_id):
+    def make_reserve(self, sku_id, try_count=5):
         """商品预约
         :param sku_id: 商品id
+        :param try_count:尝试次数
         :return:
         """
         reserve_url = self._get_reserve_url(sku_id)
         if not reserve_url:
-            logger.error('%s 非预约商品', sku_id)
-            return
+            if try_count <= 0:
+                logger.error('%s 非预约商品', sku_id)
+                self.messenger.send("预约失败", sku_id)
+                return
+            else:
+                time.sleep(3.0)
+                self.make_reserve(sku_id,try_count - 1)
+
         headers = {
             'User-Agent': self.user_agent,
             'Referer': 'https://item.jd.com/{}.html'.format(sku_id),
@@ -385,6 +392,7 @@ class Assistant(object):
         reserve_result = soup.find('p', {'class': 'bd-right-result'}).text.strip(' \t\r\n')
         # 预约成功，已获得抢购资格 / 您已成功预约过了，无需重复预约
         logger.info(reserve_result)
+        self.messenger.send("预约成功", sku_id)
 
     def make_reserve_by_time(self, sku_id,buy_time):
         """

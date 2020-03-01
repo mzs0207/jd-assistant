@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import datetime
+import time
 
 from jd_assistant import Assistant
 
@@ -14,7 +15,7 @@ if __name__ == '__main__':
     def buy():
 
         sku_ids = '100011521400'  # 商品id
-        area = '19_1607_3639'  # 区域id
+        area = '19_1607_3155'  # 区域id
         today = datetime.datetime.now()
         tomorow = today + datetime.timedelta(days=1)
         yue_yue_time = '{0} 21:00:00.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
@@ -28,6 +29,7 @@ if __name__ == '__main__':
     while 1:
         try:
             buy()
+            time.sleep(60*60*15)
         except Exception as e:
             print(e)
 

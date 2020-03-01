@@ -15,7 +15,7 @@ if __name__ == '__main__':
     def buy():
         today = datetime.datetime.now()
         sku_ids = '100011621642'  # 商品id
-        area = '19_1607_3639'  # 区域id
+        area = '19_1607_3155'  # 区域id
         yue_yue_time = '{0} 15:00:00.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
         buy_time = '{0} 20:00:00.5'.format(today.strftime("%Y-%m-%d"))
         asst = Assistant()  # 初始化

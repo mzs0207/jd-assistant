@@ -1299,6 +1299,7 @@ class Assistant(object):
             self.request_seckill_url(sku_id)
             self.request_seckill_checkout_page(sku_id, num)
             if self.submit_seckill_order(sku_id, num):
+                self.messenger.send("抢购成功", "请及时付款")
                 return True
             else:
                 logger.info('休息%ss', interval)

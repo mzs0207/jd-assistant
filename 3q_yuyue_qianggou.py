@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+import datetime
+
 from jd_assistant import Assistant
 
 if __name__ == '__main__':
@@ -8,16 +10,25 @@ if __name__ == '__main__':
     https://github.com/tychxn/jd-assistant/wiki/1.-%E4%BA%AC%E4%B8%9C%E6%8A%A2%E8%B4%AD%E5%8A%A9%E6%89%8B%E7%94%A8%E6%B3%95
     """
 
-    sku_ids = '100011551632'  # 商品id
-    area = '19_1607_3155'  # 区域id
-    yue_yue_time = '2020-02-27 15:00:00.5' # 预约时间
-    buy_time = '2020-02-27 20:00:00.8'
-    asst = Assistant()  # 初始化
-    asst.login_by_QRcode()  # 扫码登陆
-    asst.make_reserve_by_time(sku_ids, yue_yue_time)  # 执行预约
-    #asst.exec_reserve_seckill_by_time(sku_ids, buy_time, 4, 1.5)  # 执行抢购
-    asst.exec_seckill_by_time(sku_ids, buy_time, 10, 2, 1)
 
+    def buy():
+        today = datetime.datetime.now()
+        sku_ids = '100011551632'  # 商品id
+        area = '19_1607_3639'  # 区域id
+        yue_yue_time = '{0} 15:00:00.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
+        buy_time = '{0} 20:00:00.5'.format(today.strftime("%Y-%m-%d"))
+        asst = Assistant()  # 初始化
+        asst.login_by_QRcode()  # 扫码登陆
+        asst.make_reserve_by_time(sku_ids, yue_yue_time)  # 执行预约
+        # asst.exec_reserve_seckill_by_time(sku_ids, buy_time, 4, 1.5)  # 执行抢购
+        asst.exec_seckill_by_time(sku_ids, buy_time, 10, 0.5, 1)
+
+
+    while 1:
+        try:
+            buy()
+        except Exception as e:
+            print(e)
 
     # 6个参数：
     # sku_ids: 商品id。可以设置多个商品，也可以带数量，如：'1234' 或 '1234,5678' 或 '1234:2' 或 '1234:2,5678:3'

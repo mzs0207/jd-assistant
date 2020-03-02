@@ -13,11 +13,11 @@ if __name__ == '__main__':
 
 
     def buy():
-        today = datetime.datetime.now()
         sku_ids = '100011621642'  # 商品id
         area = '19_1607_3155'  # 区域id
-        yue_yue_time = '{0} 15:00:00.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
-        buy_time = '{0} 20:00:00.5'.format(today.strftime("%Y-%m-%d"))
+        today = '2020-03-03'
+        yue_yue_time = '{0} 15:00:00.5'.format(today)  # 预约时间
+        buy_time = '{0} 20:00:00.7'.format(today)
         asst = Assistant()  # 初始化
         asst.login_by_QRcode()  # 扫码登陆
         asst.make_reserve_by_time(sku_ids, yue_yue_time)  # 执行预约

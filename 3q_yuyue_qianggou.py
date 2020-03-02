@@ -25,12 +25,7 @@ if __name__ == '__main__':
         asst.exec_seckill_by_time(sku_ids, buy_time, 10, 0.5, 1)
 
 
-    while 1:
-        try:
-            buy()
-            time.sleep(60*60*5)
-        except Exception as e:
-            print(e)
+    buy()
 
     # 6个参数：
     # sku_ids: 商品id。可以设置多个商品，也可以带数量，如：'1234' 或 '1234,5678' 或 '1234:2' 或 '1234:2,5678:3'

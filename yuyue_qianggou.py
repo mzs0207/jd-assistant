@@ -18,7 +18,7 @@ if __name__ == '__main__':
         area = '19_1607_3155'  # 区域id
         today = datetime.datetime.now()
         tomorow = today + datetime.timedelta(days=1)
-        yue_yue_time = '{0} 21:00:00.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
+        yue_yue_time = '{0} 21:00:01.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
         buy_time = '{0} 10:00:00.7'.format(tomorow.strftime("%Y-%m-%d"))
         asst = Assistant()  # 初始化
         asst.login_by_QRcode()  # 扫码登陆

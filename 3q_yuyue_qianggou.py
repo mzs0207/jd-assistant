@@ -16,7 +16,7 @@ if __name__ == '__main__':
         today = datetime.datetime.now()
         sku_ids = '100011551632'  # 商品id
         area = '19_1607_3155'  # 区域id
-        yue_yue_time = '{0} 15:00:00.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
+        yue_yue_time = '{0} 15:00:01.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
         buy_time = '{0} 20:00:00.5'.format(today.strftime("%Y-%m-%d"))
         asst = Assistant()  # 初始化
         asst.login_by_QRcode()  # 扫码登陆

@@ -1304,8 +1304,8 @@ class Assistant(object):
         """
         for count in range(1, retry + 1):
             logger.info('第[%s/%s]次尝试抢购商品:%s', count, retry, sku_id)
-            self.request_seckill_url(sku_id)
-            self.request_seckill_checkout_page(sku_id, num)
+            #self.request_seckill_url(sku_id)
+            #self.request_seckill_checkout_page(sku_id, num)
             if self.submit_seckill_order(sku_id, num):
                 self.messenger.send("抢购成功", "请及时付款")
                 return True
@@ -1335,6 +1335,8 @@ class Assistant(object):
         for sku_id in items_dict:
             logger.info('开始抢购商品:%s', sku_id)
             self.exec_seckill(sku_id, retry, interval, num)
+
+
 
     @check_login
     def exec_reserve_seckill_by_time(self, sku_id, buy_time, retry=4, interval=4, num=1):

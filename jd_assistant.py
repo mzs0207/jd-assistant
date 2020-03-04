@@ -37,7 +37,7 @@ from util import (
 
 class Assistant(object):
 
-    def __init__(self):
+    def __init__(self, account):
         use_random_ua = global_config.getboolean('config', 'random_useragent')
         self.user_agent = DEFAULT_USER_AGENT if not use_random_ua else get_random_useragent()
         self.headers = {'User-Agent': self.user_agent}
@@ -62,6 +62,7 @@ class Assistant(object):
         self.username = ''
         self.nick_name = ''
         self.is_login = False
+        self.account = account
         self.sess = requests.session()
         try:
             self._load_cookies()
@@ -69,18 +70,14 @@ class Assistant(object):
             pass
 
     def _load_cookies(self):
-        cookies_file = ''
-        for name in os.listdir('./cookies'):
-            if name.endswith('.cookies'):
-                cookies_file = './cookies/{0}'.format(name)
-                break
+        cookies_file = './cookies/{0}.cookies'.format(self.account)
         with open(cookies_file, 'rb') as f:
             local_cookies = pickle.load(f)
         self.sess.cookies.update(local_cookies)
         self.is_login = self._validate_cookies()
 
     def _save_cookies(self):
-        cookies_file = './cookies/{0}.cookies'.format(self.nick_name)
+        cookies_file = './cookies/{0}.cookies'.format(self.account)
         directory = os.path.dirname(cookies_file)
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -105,6 +102,16 @@ class Assistant(object):
 
         self.sess = requests.session()
         return False
+
+    def keep(self):
+        """
+
+        :return:
+        """
+        if self._validate_cookies():
+            self._save_cookies()
+        else:
+            self.messenger.send('账号{0}cookie 过期提醒'.format(self.account), '请尽快重新登陆')
 
     @deprecated
     def _need_auth_code(self, username):

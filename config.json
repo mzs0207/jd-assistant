@@ -1,0 +1,26 @@
+{
+    "accounts":[
+        "mzs02007"
+    ],
+    "tasks":[
+        {
+            "account":"mzs0207",
+            "action_time":"2020-03-04 15:00:01.3",
+            "action_type":"yuyue",
+            "finish":1,
+            "sku_ids":"100011521400",
+            "task_start_time":"2020-03-04 14:40:00.0"
+        },
+        {
+            "account":"mzs0207",
+            "action_time":"2020-03-04 20:00:00.3",
+            "action_type":"buy",
+            "finish":0,
+            "interval":0.5,
+            "num":1,
+            "retry":4,
+            "sku_ids":"100011521400",
+            "task_start_time":"2020-03-04 19:55:00.0"
+        }
+    ]
+}

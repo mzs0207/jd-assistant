@@ -19,7 +19,7 @@ if __name__ == '__main__':
         today = datetime.datetime.now()
         tomorow = today + datetime.timedelta(days=1)
         yue_yue_time = '{0} 21:00:01.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
-        buy_time = '{0} 10:00:00.3'.format(tomorow.strftime("%Y-%m-%d"))
+        buy_time = '{0} 10:00:00.4'.format(tomorow.strftime("%Y-%m-%d"))
         asst = Assistant()  # 初始化
         asst.login_by_QRcode()  # 扫码登陆
         asst.make_reserve_by_time(sku_ids, yue_yue_time)  # 执行预约

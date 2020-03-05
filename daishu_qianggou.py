@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
 
     def buy():
-        today = '2020-03-03'
+        today = '2020-03-06'
         sku_ids = '100006394713'  # 商品id
         area = '19_1607_3155'  # 区域id
         yue_yue_time = '{0} 15:00:01.5'.format(today)  # 预约时间

@@ -117,6 +117,7 @@ def save_image(resp, image_file):
 
 
 def parse_json(s):
+    print(s)
     begin = s.find('{')
     end = s.rfind('}') + 1
     return json.loads(s[begin:end])

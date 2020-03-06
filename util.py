@@ -228,3 +228,10 @@ def get_random_useragent():
     :return: UserAgent字符串
     """
     return random.choice(USER_AGENTS)
+
+
+if __name__ == '__main__':
+    s= '''{"addressList":[{"addressDetail":"沙头街道沙嘴二坊62栋204","addressName":"家","areaCode":"","cityId":1607,"cityName":"深圳市","countyId":3639,"countyName":"福田区","defaultAddress":true,"email":"","id":462517796,"mobile":"134****0136","mobileKey":"81346982d741f5443762453a659c1a3d","name":"叶妙纯","overseas":0,"phone":"","postCode":"","provinceId":19,"provinceName":"广东","townId":0,"townName":"","yuyueAddress":false}],"buyNum":1,"freight":0,"invoiceInfo":{"invoiceCode":"","invoiceCompany":"","invoiceContentType":1,"invoiceEmail":"","invoicePhone":"134****0136","invoicePhoneKey":"81346982d741f5443762453a659c1a3d","invoiceTitle":4,"invoiceType":3},"paymentTypeList":[{"paymentId":4,"paymentName":"在线支付"}],"seckillSkuVO":{"color":"","extMap":{"YuShou":"1","is7ToReturn":"1","new7ToReturn":"102","thwa":"2","SoldOversea":"0"},"height":0.0,"jdPrice":18.80,"length":0.0,"num":1,"rePrice":0.00,"size":"","skuId":100011521400,"skuImgUrl":"jfs/t1/92741/19/12920/129509/5e4e586bE18bc728d/f160239c0fda06f8.jpg","skuName":"振德 （ZHENDE) 口罩一次性医用口罩男女无纺布内里口罩防尘防柳絮防花粉骑行透气 10只/包  浅蓝","skuPrice":18.80,"thirdCategoryId":0.0,"venderName":"京东自营","venderType":0,"weight":0.057,"width":0.0},"shipmentParam":{"shipmentTimeType":3,"shipmentTimeTypeName":"工作日、双休日与假期均可送货","shipmentType":65,"shipmentTypeName":"京东配送"},"token":"5d0884debb84980e68441c87982afbc0"}
+https://marathon.jd.com/koFail.html'''
+    r = parse_json(s)
+    print(r)

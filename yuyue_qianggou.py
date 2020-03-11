@@ -19,10 +19,11 @@ if __name__ == '__main__':
         today = datetime.datetime.now()
         tomorow = today + datetime.timedelta(days=1)
         yue_yue_time = '{0} 21:00:01.5'.format(today.strftime("%Y-%m-%d"))  # 预约时间
-        buy_time = '{0} 10:00:00.1'.format(tomorow.strftime("%Y-%m-%d"))
+        #buy_time = '{0} 10:00:00.1'.format(tomorow.strftime("%Y-%m-%d"))
+        buy_time = '2020-03-11 10:00:00.5'
         asst = Assistant()  # 初始化
         asst.login_by_QRcode()  # 扫码登陆
-        asst.make_reserve_by_time(sku_ids, yue_yue_time)  # 执行预约
+        #asst.make_reserve_by_time(sku_ids, yue_yue_time)  # 执行预约
         asst.exec_seckill_by_time(sku_ids, buy_time, 10, 0.5, 1)  # 执行抢购
 
 
